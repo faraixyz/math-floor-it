@@ -5,25 +5,24 @@
     <title>Uncommon Hacks 2017</title>
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="jquery-3.1.1.js"></script>
-    <script>
-        function initMap(){
-            var ds = new google.maps.DirectionService;
-            var chicago = {lat: 41.8333925, lng: -88.0123333};
-            var map = new google.maps.Map(document.getElementById("map"),{
-                zoom:9,
-                center:chicago
-                });
-            
-            map.addListener('click', function(){
-                
-            })
-        }
-    </script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2I74gM_d-BKNFw3mat6ziCeedygNfzic&libraries=places&callback=initMap"
          async defer></script>
 </head>
 <body>
-    <h1 id="pizza">Hello World!</h1>
+    <h1>math.<b>floor(it)</b></h1>
+    <br/> <!-- Map insert goes here? -->
+    <div class="location-inputs">
+      <form-group>
+        <label for="start-location">Start Point</label>
+        <input id="start-location" type="text" placeholder="Start..." onFocus="geolocate()">
+      </form-group>
+      <form-group>
+        <label for="end-location">End Point</label>
+        <input id="end-location" type="text" placeholder="End...">
+      </form-group>
+    </div>
     <div id="map"></div>
+    <script src="main.js"></script>
 </body>
 </html>
