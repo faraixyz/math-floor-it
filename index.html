@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <title>Uncommon Hacks 2017</title>
     <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="main.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <script>
+        function initMap(){
+            var ds = new google.maps.DirectionService;
+            var chicago = {lat: 41.8333925, lng: -88.0123333};
+            var map = new google.maps.Map(document.getElementById("map"),{
+                zoom:9,
+                center:chicago
+                });
+            
+            map.addListener('click', function(){
+                
+            })
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2I74gM_d-BKNFw3mat6ziCeedygNfzic&libraries=places&callback=initMap"
+         async defer></script>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d380513.71589960327!2d-88.01233330999884!3d41.83339251948875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C+IL!5e0!3m2!1sen!2sus!4v1484419198719" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <h1 id="pizza">Hello World!</h1>
+    <div id="map"></div>
 </body>
 </html>
