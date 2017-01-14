@@ -1,2 +1,2 @@
 XYZ for UncommonHacks 2017
-by Farai Gandiya, Nick Crawford, 
+by Nick Crawford, Claire Dolin, Farai Gandiya, and Isha Mehrotra
