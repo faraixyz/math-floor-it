@@ -7,17 +7,105 @@
     <script src="jquery-3.1.1.js"></script>
     <script>
         function initMap(){
+            var styles = [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#444444"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                            "color": "#63e897"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                            "saturation": -100
+                        },
+                        {
+                            "lightness": 45
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                            "color": "#6490ff"
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                        ]
+                    }
+                ]
+
             var chicago = {lat: 41.8333925, lng: -87.8123333};
             var map = new google.maps.Map(document.getElementById("map"),{
-                zoom:10,
-                center:chicago
+                    mapTypeControlOptions: {
+                        mapTypeIds: ['Styled']
+                    },
+                    zoom:10,
+                    center:chicago,
+                    disableDefaultUI: true,
+                    mapTypeId: 'Styled'
+                    
                 });
             
             var speedcams = [];
             var redcams = [];
             var ds = new google.maps.DirectionsService;
             var dd = new google.maps.DirectionsRenderer;
-
+            var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
+            map.mapTypes.set('Styled', styledMapType);
             dd.setMap(map);
 
             //creates speed camera markers
@@ -80,8 +168,24 @@
                 to_marker.setPosition(place.geometry.location);
                 to_marker.setMap(map);
             });
+
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var geolocation = {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude
+                      };
+                      var circle = new google.maps.Circle({
+                          center: geolocation,
+                          radius: position.coords.accuracy
+                      });
+                      autocomplete.setBounds(circle.getBounds());
+                  });
+                }
+            }
+
             $("#myAnimation").on("click", function(){
-                
             });
         }
     </script>
@@ -91,39 +195,47 @@
 </head>
 <body>
     <h1>math.<b>floor(it)</b></h1>
-    <br/>
-    <div class="location-inputs">
-      <form-group>
-        <label for="start-location">Start Point</label>
-        <input id="start-location" type="text" placeholder="Start..." onFocus="geolocate()">
-      </form-group>
-      <form-group>
-        <label for="end-location">End Point</label>
-        <input id="end-location" type="text" placeholder="End...">
-      </form-group>
-
-
-      <form-group id ="myContainer">
-        <div id ="myAnimation" onclick="myMove()">
-          <img id="pic" src="car2.jpg" height=30px width=auto />
+    <div class="content">
+        <div class="location-inputs sixty-container">
+            <form-group>
+                <label for="start-location">Start Point</label>
+                <input id="start-location" type="text" placeholder="Start..." onFocus="geolocate()">
+            </form-group>
+            <form-group>
+                <label for="end-location">End Point</label>
+                <input id="end-location" type="text" placeholder="End...">
+            </form-group>
         </div>
+        <div class="forty-container">
+            <div id="map"></div>
+        </div>
+        <div class="results sixty-container">
 
-        <script>
-          function myMove() {
-            var elem = document.getElementById("myAnimation");
-            var pos = 0;
-            var id = setInterval(frame, 10);
-            function frame() {
-             if (pos == 300) {
-               clearInterval(id);
-               elem.style.left = "0px";
-              } else {
-                pos++; 
-                elem.style.left = pos + 'px'; 
-              }
-            }
-          }
-        </script>
+        </div>
+    </div>
+    <div id="myAnimation" onclick="myMove()">
+        <img id="pic" src="car2.jpg" />
+    </div>
+
+    <script>
+      function myMove() {
+        var elem = document.getElementById("myAnimation");
+        $(elem).addClass("clicked");
+
+        //Change 
+        $(".location-inputs").animate({
+            width: 0,
+            "padding-left": 0
+        }, 1000, function() {
+            // Animation complete.
+        });
+        $(".results").animate({
+            width: "55%"
+        }, 1000, function() {
+            // Animation complete.
+        });
+      }
+    </script>
 
       <!--<input id="car-animation" type="image" src="car1.jpg">-->
       <!--<input id="car-animation" type="button">-->
@@ -134,9 +246,6 @@
           document.getElementById("animate-car").src == "car2.jpg") 
         }
       </script>-->
-
-      </form-group>
-    </div>
-    <div id="map"></div>
+    
 </body>
 </html>
