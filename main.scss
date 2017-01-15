@@ -131,12 +131,34 @@ b {
 
 #myAnimation {
 	position: absolute;
-	bottom: 36px;
-	left: 36px;
+	bottom: -5px;
+	left: -300px;
 	cursor: pointer;
-	img {
-		width: 20%;
+
+	svg {
+		width: 288px;
 		height: auto;
+	}
+
+	&.prepped {
+		left: 36px;
+
+		&:before {
+			content: "Let's Go!";
+			position: absolute;
+			bottom: 120%;
+			left: 0%;
+			background-color: $light-bg;
+			font-size: 1.5em;
+			font-weight: 400;
+			padding: 16px 36px;
+			border-radius: 5px;
+			clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 80% 90%, 83% 100%, 75% 90%, 0% 90%);
+		}
+	}
+
+	&.clicked {
+
 	}
 }
 
@@ -164,7 +186,7 @@ b {
 
 	svg {
 		position: absolute;
-		left: 50%;
+		left: 45%;
 		top: 50%;
 		transform: translate(-50%, -50%) scale(-1, 1);
 		transition: transform 0.3s;
