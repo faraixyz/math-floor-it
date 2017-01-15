@@ -7,16 +7,26 @@
     <script src="jquery-3.1.1.js"></script>
     <script>
         function initMap(){
-            var ds = new google.maps.DirectionService;
             var chicago = {lat: 41.8333925, lng: -88.0123333};
             var map = new google.maps.Map(document.getElementById("map"),{
                 zoom:9,
                 center:chicago
                 });
             
-            map.addListener('click', function(){
-                
-            })
+            //creates speed camera markers
+            $.getJSON("data/speed-cam-locations.json", function(json){
+                var speedcams = []
+                var locs = json.data;
+                for(var i=0;i<locs.length;i++){
+                    var pos = {lat:parseFloat(locs[i][12]), lng:parseFloat(locs[i][13])};
+                    var marker = new google.maps.Marker({
+                        position:pos,
+                        map: map,
+                        title:"Speed Camera"
+                    });
+                    speedcams.push(marker);
+                }
+            });           
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2I74gM_d-BKNFw3mat6ziCeedygNfzic&libraries=places&callback=initMap"
