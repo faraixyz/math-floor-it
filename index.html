@@ -111,10 +111,25 @@
             function computeTotalDistance(result) {
                 var total = 0;
                 var myroute = result.routes[0];
+                var totalDuration = 0;
+                var speed = 0;
+                var time10 = 0;
+                var time25 = 0;
+
                 for (var i = 0; i < myroute.legs.length; i++) {
                     total += myroute.legs[i].distance.value;
+                    totalDuration += myroute.legs[i].duration.value;
                 }
-                total = total / 1000;
+
+                total = total*0.000621371
+                speed = total/(totalDuration/3600)
+                time10 = total/((speed+10)/60)
+                time25 = total/((speed+25)/60)
+
+                $("#trip-distance").text(Math.round(total*100)/100);
+                $("#trip-time").text(Math.round(totalDuration/60));
+                $("#trip-time10").text(Math.round(time10));
+                $("#trip-time25").text(Math.round(time25));
                 //document.getElementById('total').innerHTML = total + ' km';
 
                 pathRoute = result.routes[0].overview_path;
@@ -232,8 +247,14 @@
     </div>
     <div id="map"></div>
     <div id="summary">
-        <p>You could speed through as many as <span id="red-lights">0</span> red light cameras.</p>
-        <p>You could speed past <span id="speed-traps">0</span> speed cameras.</p>
+        <p style="font-size:160%;">Trip Information</p>
+        <p>Total Distance: <span id="trip-distance">0</span> miles</p>
+        <p style="font-size:120%;">Total Time:</p>
+        <p>without speeding: <span id="trip-time">0</span> minutes</p>
+        <p>speeding 10 miles over: <span id="trip-time10">0</span> minutes</p>
+        <p>speeding 25 miles over: <span id="trip-time25">0</span> minutes</p>
+        <p>You could speed through <span id="red-lights">0</span> red light camera(s).</p>
+        <p>You could speed past <span id="speed-traps">0</span> speed camera(s).</p>
         <p>You could owe $<span id="total">0</span> from driving so recklessly.</p>
     </div>
 </body>
