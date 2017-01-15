@@ -35,6 +35,11 @@ html, body {
 	height: 100%;
 }
 
+body {
+	width: 100vw;
+	overflow-x: hidden;
+}
+
 h1 {
 	font-size: 2em;
 	font-weight: 300;
@@ -57,10 +62,12 @@ h2 {
 }
 
 .content {
-	width: 100%;
+	width: 100vw;
 	height: 100%;
 
 	text-align: center;
+
+	overflow-x: hidden;
 
 	display: flex;
 	justify-content: space-between;
@@ -97,7 +104,48 @@ h2 {
 .flex-row {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	margin-bottom: 36px;
+
+	p {
+		transform: translateY(-50%);
+	}
+}
+
+.results .flex-row {
+	display: none;
+}
+
+.results .fade-three .icon {
+	width: 72px;
+	height: 72px;
+	margin-left: 52px;
+	margin-top: 16px;
+}
+
+.time-row {
+	margin-left: 36px;
+
+	b {
+		font-size: 1.5em;
+	}
+
+	.pop {
+		font-size: 2em;
+		color: darken($green, 10%);
+		font-weight: 400;
+		text-shadow: 1px 1px rgba($black,0.3);
+	}
+}
+
+.fade-two {
+	.icon {
+		margin-left: 58px;
+	}
+}
+
+.fade-four {
+	margin: 64px 58px 36px;
 }
 
 input[type="number"] {
@@ -129,6 +177,7 @@ input[type="number"] {
 	font-style: italic;
 	margin-right: 10px;
 	margin-left: 10px;
+	text-shadow: 1px 1px rgba($black,0.3);
 }
 
 .location-inputs {
@@ -194,12 +243,46 @@ b {
 	font-weight: 700;
 }
 
+.start {
+	animation: pop 3s ease;
+	animation-delay: 20s;
+}
+
+@keyframes pop {
+	0% {
+		transform: scale(1, 1);
+	}
+
+	10% {
+		transform: scale(1.5, 1.5);
+	}
+
+	20% {
+		transform: scale(1, 1);
+	}
+
+	40% {
+		transform: scale(1.2, 1.2);
+	}
+
+	60% {
+		transform: scale(1, 1);
+	}
+
+	80% {
+		transform: scale(1.2, 1.2);
+	}
+
+	100% {
+		transform: scale(1, 1);
+	}
+}
+
 #myAnimation {
 	position: absolute;
 	bottom: -5px;
 	left: -300px;
 	cursor: pointer;
-	overflow-x: hidden;
 	width: 100vw;
 	svg {
 		width: 288px;
@@ -242,26 +325,14 @@ b {
 			border-radius: 5px;
 			clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 80% 90%, 83% 100%, 75% 90%, 0% 90%);
 
-			animation: popupshow 0.1s linear;
+			animation: popupshow 0.2s linear;
 			animation-delay: 3s;
-			animation-fill-mode: forwards;
+			animation-fill-mode: both;
 		}
 
 		#BackWheel, #FrontWheel {
 			transform: rotate(0deg);
-			transition: transform 3s ease;
-		}
-
-		@keyframes popupshow {
-			0% {
-				transform: translateY(10%);
-				opacity: 0;
-			}
-
-			100% {
-				transform: translateY(0%);
-				opacity: 1.0;
-			}
+			transition: transform 2s ease;
 		}
 
 	}
@@ -281,6 +352,18 @@ b {
 		transition: left 1s ease-in;
 		animation: rearBack 1s linear;
 		transform-origin: 0% 100%;
+	}
+}
+
+@keyframes popupshow {
+	0% {
+		transform: translateY(10%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0%);
+		opacity: 1.0;
 	}
 }
 
@@ -328,3 +411,13 @@ b {
 		transition: transform 0.3s;
 	}
 }
+
+.more-info {
+	p {
+		margin-bottom: 36px;
+	}
+
+	h2 {
+		margin-bottom: 36px;
+	}
+} 
