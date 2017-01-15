@@ -331,6 +331,8 @@
             }, 1000, function() {
                 // Animation complete.
             });
+
+            $("input:text:visible:first").focus();
             
         }
     </script>
@@ -344,11 +346,11 @@
         <div class="location-inputs">
             <form-group>
                 <label for="start-location">Start Point</label>
-                <input id="start-location" type="text" placeholder="Start..." onFocus="geolocate()">
+                <input id="start-location" type="text" placeholder="Starting Location..." onFocus="geolocate()">
             </form-group>
             <form-group>
                 <label for="end-location">End Point</label>
-                <input id="end-location" type="text" placeholder="End...">
+                <input id="end-location" type="text" placeholder="Ending Location...">
             </form-group>
         </div>
         <div class="map-container">
@@ -357,18 +359,19 @@
         <div class="results">
             <h2>Here's your trip details...</h2>
             <br />
-            <div class="flex-row">
-                <img src="speed_limit.svg" class="icon" style="position:relative;"/><p class="target" id="speed-amount" style="position: relative; top:30px; left:-105px; text-align:left; font-size:60px;">0</p>
+
+            <div class="flex-row fade-one">
+                <img src="speed_limit.svg" class="icon" style="position:relative;"/><p id="speed-amount2" style="position: relative; top:30px; left:-125px; text-align:center; font-size:60px; margin-right: -64px;">25</p>
                 <p>If you drive <input type="number" id="speed-amount" min="0" max="50" step="5" value="25">miles per hour over the speed limit...</p>
             </div>
-            <div class="flex-row">
+            <div class="flex-row fade-two">
                 <img src="stoplight.svg" class="icon"/>
                 
                 <p> ...you'll run <span id="red-lights" class="big-number" >0</span> stoplights...</p>
             </div>
 
-            <div class="flex-row">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+            <div class="flex-row fade-three">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
                     <g>
                         <circle cx="255.811" cy="285.309" r="75.217" fill="#413D37"/>
                         <path d="M477,137H352.718L349,108c0-16.568-13.432-30-30-30H191c-16.568,0-30,13.432-30,30l-3.718,29H34   c-11.046,0-20,8.454-20,19.5v258c0,11.046,8.954,20.5,20,20.5h443c11.046,0,20-9.454,20-20.5v-258C497,145.454,488.046,137,477,137   z M255.595,408.562c-67.928,0-122.994-55.066-122.994-122.993c0-67.928,55.066-122.994,122.994-122.994   c67.928,0,122.994,55.066,122.994,122.994C378.589,353.495,323.523,408.562,255.595,408.562z M474,190H369v-31h105V190z" fill="#413D37"/>
@@ -376,18 +379,21 @@
                 </svg>
                 <p>...and pass <span class="big-number" id="speed-traps">0</span> speed cameras.</p>
             </div>
-            
-            <hr>
+            <div class="flex-row fade-four time-row">
+                <p><b>But...</b> you'll save <span class="pop"> <span id="saved-time">0</span> minutes!</span></p>
+            </div>
 
-            <h2>More Info...</h2>
-            <p style="margin-left:50px;">Total Distance: <span id="trip-distance">0</span> miles</p>
-            <br /><br />
-            <p style="text-align:left; margin-left:200px;">Total time without speeding: <span id="trip-time">0</span> minutes</p>
-            
-            <p style="text-align:left; margin-left:200px;">speeding 10 miles over: <span id="trip-time10">0</span> minutes</p>
-            <p style="text-align:left; margin-left:200px;">speeding 25 miles over: <span id="trip-time25">0</span> minutes</p>
+            <div class="flex-row more-info">
+                <hr>
+                <h2>More Info...</h2>
+                <p style="margin-left:58px;">Total Distance: <span id="trip-distance">0</span> miles</p><br />
+                <p style="text-align:left; margin-left:58px;">Total time without speeding: <span id="trip-time">0</span> minutes</p><br />
+                <p style="text-align:left; margin-left:58px;">speeding 10 miles over: <span id="trip-time10">0</span> minutes</p><br />
+                <p style="text-align:left; margin-left:58px;">speeding 25 miles over: <span id="trip-time25">0</span> minutes</p><br />
 
-            <br /><br /><br /><br />
+                <p style="text-align:left; font-size:20px; font-weight: bold;  margin-left:58px;">TRAFFIC VIOLATION FINES: $<span id="total">0</span></p>
+            </div>            
+        
             <!--
             <p style="text-align:left; margin-left:50px;">You could speed past:</p> 
             <div class="textimage" align=left>
@@ -401,8 +407,8 @@
             </div>
 
             <br /><br />-->
-            <p style="text-align:left; margin-left: 50px; margin-bottom:20px; font-size:20px;">TIME SAVED: <span id="saved-time">0</span> minutes</p>
-            <p style="text-align:left; margin-left: 50px; font-size:20px;">TRAFFIC VIOLATION FINES: $<span id="total">0</span></p>
+            <!-- <p style="text-align:left; margin-left: 50px; margin-bottom:20px; font-size:20px;">TIME SAVED: <span id="saved-time">0</span> minutes</p>
+            <p style="text-align:left; margin-left: 50px; font-size:20px;">TRAFFIC VIOLATION FINES: $<span id="total">0</span></p> -->
 
         </div>
         <div id="back" onclick="goBack()">
@@ -439,7 +445,10 @@
         $(".results").animate({
             width: "65%"
         }, 700, function() {
-            // Animation complete.
+            $(".results .flex-row").each(function(i) {
+               $(this).delay((i) * 2000 + 500).fadeIn(500);
+            });
+            $(".pop").addClass("start");
         });
 
         $("h1").animate({
@@ -477,6 +486,7 @@
         }, 700, function() {
             // Animation complete.
         });
+        $(".results .flex-row").removeClass("fade");
         $(".results").animate({
             width: 0
         }, 700, function() {
@@ -498,7 +508,7 @@
         });
       }
     </script>
-
+    <script src="countUp.js"></script>
    
 </body>
 </html>
