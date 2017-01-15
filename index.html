@@ -248,6 +248,7 @@
                 var fine = speed_tickets * SPEED + red_tickets * RED;
                 $("#total").text(fine);
 
+                $("#chance-death").text(SPEED * .71);
             }
             function checkCameras(cameraArray, pathRoute, cameraType) {
                 polylineRoute = new google.maps.Polyline({path: pathRoute});
@@ -367,7 +368,7 @@
             <div class="flex-row fade-two">
                 <img src="stoplight.svg" class="icon"/>
                 
-                <p> ...you'll run <span id="red-lights" class="big-number" >0</span> stoplights...</p>
+                <p> ...and run <span id="red-lights" class="big-number" >0</span> stoplights...</p>
             </div>
 
             <div class="flex-row fade-three">
@@ -377,13 +378,16 @@
                         <path d="M477,137H352.718L349,108c0-16.568-13.432-30-30-30H191c-16.568,0-30,13.432-30,30l-3.718,29H34   c-11.046,0-20,8.454-20,19.5v258c0,11.046,8.954,20.5,20,20.5h443c11.046,0,20-9.454,20-20.5v-258C497,145.454,488.046,137,477,137   z M255.595,408.562c-67.928,0-122.994-55.066-122.994-122.993c0-67.928,55.066-122.994,122.994-122.994   c67.928,0,122.994,55.066,122.994,122.994C378.589,353.495,323.523,408.562,255.595,408.562z M474,190H369v-31h105V190z" fill="#413D37"/>
                     </g>
                 </svg>
-                <p>...and pass <span class="big-number" id="speed-traps">0</span> speed cameras.</p>
+                <p>...and don't care about the <span class="big-number" id="speed-traps">0</span> speed cameras you'll pass...</p>
             </div>
             <div class="flex-row fade-four time-row">
-                <p><b>But...</b> you'll save <span class="pop"> <span id="saved-time">0</span> minutes!</span></p>
+                <p><b>Then...</b> you can save <span class="pop"> <span id="saved-time">0</span> minutes! </span> on your trip.</p>
             </div>
 
             <div class="flex-row more-info">
+                <div class="chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--play" width="24" height="24" viewBox="0 0 18 18"><path fill="#404048" fill-rule="evenodd" stroke="#404048" stroke-width="2" d="M1 17V1l16 8z" stroke-linejoin="round"/></svg>
+                </div>
                 <hr>
                 <h2>More Info...</h2>
                 <p style="margin-left:58px;">Total Distance: <span id="trip-distance">0</span> miles</p><br />
@@ -391,7 +395,10 @@
                 <p style="text-align:left; margin-left:58px;">speeding 10 miles over: <span id="trip-time10">0</span> minutes</p><br />
                 <p style="text-align:left; margin-left:58px;">speeding 25 miles over: <span id="trip-time25">0</span> minutes</p><br />
 
-                <p style="text-align:left; font-size:20px; font-weight: bold;  margin-left:58px;">TRAFFIC VIOLATION FINES: $<span id="total">0</span></p>
+                <h2 style="text-align:left; font-size:20px; font-weight: bold;  margin-left:58px;">TRAFFIC VIOLATION FINES: <span class="big-number">$<span id="total">0</span></span></h2>
+    
+                <h2 style="text-align:left; font-size:20px; font-weight: bold;  margin-left:58px;">CHANCE OF FATAL ACCIDENT: <span class="big-number"><span id="chance-death">0</span>%</span></h2>
+
             </div>            
         
             <!--

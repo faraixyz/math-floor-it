@@ -41,7 +41,8 @@ body {
 }
 
 h1 {
-	font-size: 2em;
+	font-family: "HelveticaNeue", Helvetica;
+	font-size: 1.2em;
 	font-weight: 300;
 	text-align: center;
 	margin-top: 20px;
@@ -51,6 +52,13 @@ h1 {
 	z-index: 100;
 	color: $light-bg;
 	transition: color 0.7s;
+
+	b {
+		font-size: 1.5em;
+		letter-spacing: 1px;
+		font-weight: 400;
+		color: $red;
+	}
 }
 
 h2 {
@@ -117,9 +125,9 @@ h2 {
 }
 
 .results .fade-three .icon {
-	width: 72px;
-	height: 72px;
-	margin-left: 52px;
+	width: 98px;
+	height: 98px;
+	margin-left: 48px;
 	margin-top: 16px;
 }
 
@@ -178,6 +186,7 @@ input[type="number"] {
 	margin-right: 10px;
 	margin-left: 10px;
 	text-shadow: 1px 1px rgba($black,0.3);
+	color: $red;
 }
 
 .location-inputs {
@@ -413,6 +422,24 @@ b {
 }
 
 .more-info {
+	position: relative;
+
+	.chevron {
+		position: absolute;
+		top: -48px;
+		left: 50%;
+		width: 16px;
+		height: 16px;
+		transform-origin: 50% 50%;
+		transform: translateX(-100%) rotate(90deg) scale(0.5, 1);
+		cursor: pointer;
+		opacity: 0.7;
+
+		svg {
+			width: 100%;
+			height: auto;
+		}
+	}
 	p {
 		margin-bottom: 36px;
 	}
