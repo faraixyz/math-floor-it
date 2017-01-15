@@ -7,33 +7,95 @@
     <script src="jquery-3.1.1.js"></script>
     <script>
         function initMap(){
-            var chicago = {lat: 41.8333925, lng: -88.0123333};
+            var chicago = {lat: 41.8333925, lng: -87.8123333};
             var map = new google.maps.Map(document.getElementById("map"),{
-                zoom:9,
+                zoom:10,
                 center:chicago
                 });
             
+            var speedcams = [];
+            var redcams = [];
+            var ds = new google.maps.DirectionsService;
+            var dd = new google.maps.DirectionsRenderer;
+
+            dd.setMap(map);
+
             //creates speed camera markers
             $.getJSON("data/speed-cam-locations.json", function(json){
-                var speedcams = []
                 var locs = json.data;
                 for(var i=0;i<locs.length;i++){
                     var pos = {lat:parseFloat(locs[i][12]), lng:parseFloat(locs[i][13])};
                     var marker = new google.maps.Marker({
                         position:pos,
-                        map: map,
                         title:"Speed Camera"
                     });
                     speedcams.push(marker);
                 }
-            });           
+            });
+            //created red light camera markers
+            $.getJSON("data/red-cam-location.json", function(json){
+                var locs = json.data;
+                for(var i=0;i<locs.length;i++){
+                    var pos = {lat:parseFloat(locs[i][13]), lng:parseFloat(locs[i][14])};
+                    var marker = new google.maps.Marker({
+                        position:pos,
+                        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                        title:"Red Light Camera"
+                    });
+                    redcams.push(marker);
+                }
+            });
+
+            //handling autocomplete
+            var from = new google.maps.places.Autocomplete(document.getElementById("from"));
+            var to = new google.maps.places.Autocomplete(document.getElementById("to"));
+            var from_marker = new google.maps.Marker({
+                title:"Origin"
+            });
+            var to_marker = new google.maps.Marker({
+                title:"Destination"
+                });
+            var pathv = [from_marker, to_marker];
+            var origin;
+            var destination;
+
+            from.bindTo("bounds", map);
+            to.bindTo("bounds", map);
+            from.setOptions({strictBounds: true});
+            to.setOptions({strictBounds: true});            
+            
+            from.addListener('place_changed', function(){
+                var place = from.getPlace();
+                //clears out the start point
+                from_marker.setMap(null);
+
+                from_marker.setPosition(place.geometry.location);
+                from_marker.setMap(map);
+            });
+            to.addListener('place_changed', function(){
+                var place = to.getPlace();
+                //clears out the start point
+                to_marker.setMap(null);
+
+                to_marker.setPosition(place.geometry.location);
+                to_marker.setMap(map);
+            });
+            $("#find").on("click", function(){
+
+            });
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2I74gM_d-BKNFw3mat6ziCeedygNfzic&libraries=places&callback=initMap"
          async defer></script>
+
 </head>
 <body>
     <h1 id="pizza">Hello World!</h1>
     <div id="map"></div>
+    <label for="from">Form</label>
+    <input type="text" id="from" name="from">
+    <label for="to">To</label>
+    <input type="text" id="to" name="from">
+    <button type="button" id="find">Search</button>
 </body>
 </html>
