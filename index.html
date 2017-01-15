@@ -213,10 +213,10 @@
                 return speedFines+(100*redLightTickets)
             };
             function calculateNewTime(totalDistance,speed,overLimit){
-                return totalDistance/((speed+overLimit)/60)
+                return (totalDistance/((speed+overLimit)/60))
             };
             function computeTotalDistance(result) {
-                var total = 0;
+                var totalDist = 0;
                 var myroute = result.routes[0];
                 var totalDuration = 0;
                 var speed = 0;
@@ -224,16 +224,16 @@
                 var time25 = 0;
 
                 for (var i = 0; i < myroute.legs.length; i++) {
-                    total += myroute.legs[i].distance.value;
+                    totalDist += myroute.legs[i].distance.value;
                     totalDuration += myroute.legs[i].duration.value;
                 }
 
-                total = total*0.000621371
-                speed = total/(totalDuration/3600)
-                time10 = calculateNewTime(total,speed,10)
-                time25 = calculateNewTime(total,speed,25)
+                totalDist = (totalDist*0.000621371)
+                speed = totalDist/(totalDuration/3600)
+                time10 = calculateNewTime(totalDist,speed,10)
+                time25 = calculateNewTime(totalDist,speed,25)
 
-                $("#trip-distance").text(Math.round(total*100)/100);
+                $("#trip-distance").text(Math.round(totalDist*100)/100);
                 $("#trip-time").text(Math.round(totalDuration/60));
                 $("#trip-time10").text(Math.round(time10));
                 $("#trip-time25").text(Math.round(time25));
