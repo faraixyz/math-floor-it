@@ -41,7 +41,8 @@ input[type="text"] {
   border: none;
   border-bottom: solid 2px #413D37;
   transition: border 0.3s;
-  background: none; }
+  background: none;
+  }
 
 input[type="text"]:focus,
 input[type="text"].focus {
@@ -55,9 +56,46 @@ input[type="text"].focus {
   font-style: italic; }
 
 form-group {
-  width: 40%; }
+  width: 40%; 
+  margin: 10px;}
 
 b {
   font-weight: 700; }
+
+button {
+    display: inline-block;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    width: 154px;
+}
+
+/*
+#car-animation img {
+    display: block;
+    height: auto;  
+    width: 150px;
+}
+
+#animate-car {
+    background-image: url( 'car2.jpg' );
+    background-size: 150px auto;
+    height: 40px;  
+    width: 154px;
+}
+*/
+#myContainer {
+  width: 200px;
+  height: 30px;
+  position: relative;
+}
+
+#myAnimation {
+  width: 130px;
+  height: 30px;
+  position: absolute;
+}
+
 
 /*# sourceMappingURL=main.css.map */

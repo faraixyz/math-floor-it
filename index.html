@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>math.<b>floor(it)</b></h1>
-    <br/> <!-- Map insert goes here? -->
+    <br/>
     <div class="location-inputs">
       <form-group>
         <label for="start-location">Start Point</label>
@@ -20,6 +20,41 @@
       <form-group>
         <label for="end-location">End Point</label>
         <input id="end-location" type="text" placeholder="End...">
+      </form-group>
+
+
+      <form-group id ="myContainer">
+        <div id ="myAnimation" onclick="myMove()">
+          <img id="pic" src="car2.jpg" height=30px width=auto />
+        </div>
+
+        <script>
+          function myMove() {
+            var elem = document.getElementById("myAnimation");
+            var pos = 0;
+            var id = setInterval(frame, 10);
+            function frame() {
+             if (pos == 300) {
+               clearInterval(id);
+               elem.style.left = "0px";
+              } else {
+                pos++; 
+                elem.style.left = pos + 'px'; 
+              }
+            }
+          }
+        </script>
+
+      <!--<input id="car-animation" type="image" src="car1.jpg">-->
+      <!--<input id="car-animation" type="button">-->
+      <!--<button id="car-animation"><img src="car1.jpg"></button>
+      <button id="animate-car" onclick="animateImage()"></button>
+      <script language="javascript">
+        function animateImage() {
+          document.getElementById("animate-car").src == "car2.jpg") 
+        }
+      </script>-->
+
       </form-group>
     </div>
     <div id="map"></div>
