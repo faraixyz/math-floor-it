@@ -293,7 +293,7 @@
             $("#myAnimation").on("click", function(){
 
                 if(!(from.getPlace() && to.getPlace())){
-                    alert("Plese provide both the from and to path");
+                    //alert("Plese provide both the from and to path");
                 }
                 else{
                     displayRoute(from.getPlace().geometry.location, 
@@ -302,6 +302,13 @@
                                  directionsDisplay)
                 }
 
+            });
+
+            //Fade In map
+            $("#map").animate({
+                opacity: 1
+            }, 1000, function() {
+                // Animation complete.
             });
             
         }
@@ -313,7 +320,7 @@
 <body>
     <h1>math.<b>floor(it)</b></h1>
     <div class="content">
-        <div class="location-inputs sixty-container">
+        <div class="location-inputs">
             <form-group>
                 <label for="start-location">Start Point</label>
                 <input id="start-location" type="text" placeholder="Start..." onFocus="geolocate()">
@@ -323,10 +330,10 @@
                 <input id="end-location" type="text" placeholder="End...">
             </form-group>
         </div>
-        <div class="forty-container">
+        <div class="map-container">
             <div id="map"></div>
         </div>
-        <div class="results sixty-container">
+        <div class="results">
             <p style="font-size:160%;">Trip Information</p>
             <p>Total Distance: <span id="trip-distance">0</span> miles</p>
             <p style="font-size:120%;">Total Time:</p>
@@ -341,6 +348,9 @@
     <div id="myAnimation" onclick="myMove()">
         <img id="pic" src="car2.jpg" />
     </div>
+    <div id="back" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--play" width="24" height="24" viewBox="0 0 18 18"><path fill="#404048" fill-rule="evenodd" stroke="#404048" stroke-width="2" d="M1 17V1l16 8z" stroke-linejoin="round"/></svg>
+    </div>
 
     <script>
       function myMove() {
@@ -349,14 +359,76 @@
 
         //Change 
         $(".location-inputs").animate({
+            left: "-100%",
             width: 0,
-            "padding-left": 0
-        }, 1000, function() {
+            "padding-left": 0,
+            "padding-right": 0
+        }, 700, function() {
+            // Animation complete.
+        });
+        $(".map-container").animate({
+            width: "35%"
+        }, 700, function() {
             // Animation complete.
         });
         $(".results").animate({
-            width: "55%"
+            width: "65%"
+        }, 700, function() {
+            // Animation complete.
+        });
+
+        $("h1").animate({
+            opacity: 0.7
         }, 1000, function() {
+            // Animation complete.
+        });
+        $("h1").css("color","#000");
+
+        //Change 
+        $("#back").animate({
+            left: "36px"
+        }, 700, function() {
+            // Animation complete.
+        });
+
+      }
+
+
+      function goBack() {
+        var elem = document.getElementById("myAnimation");
+        $(elem).removeClass("clicked");
+
+        //Change 
+        $(".location-inputs").animate({
+            left: 0,
+            width: "55%",
+            "padding-left": "36px",
+            "padding-right": "36px"
+        }, 700, function() {
+            // Animation complete.
+        });
+        $(".map-container").animate({
+            width: "45%"
+        }, 700, function() {
+            // Animation complete.
+        });
+        $(".results").animate({
+            width: 0
+        }, 700, function() {
+            // Animation complete.
+        });
+
+        $("h1").animate({
+            opacity: 1
+        }, 1000, function() {
+            // Animation complete.
+        });
+        $("h1").css("color","#FCECDD");
+
+        //Change 
+        $("#back").animate({
+            left: "-72px"
+        }, 700, function() {
             // Animation complete.
         });
       }
