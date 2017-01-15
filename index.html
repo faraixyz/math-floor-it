@@ -202,6 +202,19 @@
                 }
                 });
             }; 
+
+            function calculateFines(speedingTickets,speedingBy,redLightTickets){
+                speedFines=0
+                if (speedingBy>=11){
+                    speedFines = 100*speedingTickets
+                } else if (speedingBy>=6){
+                    speedFines = 35*speedingTickets
+                }
+                return speedFines+(100*redLightTickets)
+            };
+            function calculateNewTime(totalDistance,speed,overLimit){
+                return total/((speed+overLimit)/60)
+            };
             function computeTotalDistance(result) {
                 var total = 0;
                 var myroute = result.routes[0];
@@ -217,15 +230,14 @@
 
                 total = total*0.000621371
                 speed = total/(totalDuration/3600)
-                time10 = total/((speed+10)/60)
-                time25 = total/((speed+25)/60)
+                time10 = calculateNewTime(total,speed,10)
+                time25 = calculateNewTime(total,speed,25)
 
                 $("#trip-distance").text(Math.round(total*100)/100);
                 $("#trip-time").text(Math.round(totalDuration/60));
                 $("#trip-time10").text(Math.round(time10));
                 $("#trip-time25").text(Math.round(time25));
                 $("#saved-time").text(Math.round((totalDuration/60)-time25));
-                //document.getElementById('total').innerHTML = total + ' km';
 
                 pathRoute = result.routes[0].overview_path;
 
