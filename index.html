@@ -238,11 +238,7 @@
                 $("#trip-time10").text(Math.round(time10));
                 $("#trip-time25").text(Math.round(time25));
                 $("#saved-time").text(Math.round((totalDuration/60)-time25));
-                //$("#speed-amount2").text(Math.round(total/totalDuration));
-                /*$(".target").change(function() {
-                    var speed2 = $(".target").text;
-                    $("#speed-amount2").text(25+speed2);
-                });*/
+                //$("#speed-amount2").text(Math.round(((Math.round(totalDist*100))/100)/(Math.round(totalDuration/60))));
 
                 pathRoute = result.routes[0].overview_path;
 
@@ -252,11 +248,11 @@
                 $("#red-lights").text(red_tickets);
                 var fine = speed_tickets * SPEED + red_tickets * RED;
                 $("#total").text(fine);
-                //var new_speed = document.getElementbyId("speed-amount").text;
-                /*$("#speed-amount").change(function() {
-                    var new_speed = $( this ).val();
-                })*/
-                //$("#total").text(calculateFines(speed_tickets, new_speed, red_tickets));
+                /*var new_speed2 = 500;
+                $("#speed-amount").bind('change', function() {
+                    var new_speed = $(this).val();
+                })
+                $("#total").text(calculateFines(speed_tickets, new_speed, red_tickets));*/
             }
             function checkCameras(cameraArray, pathRoute, cameraType) {
                 polylineRoute = new google.maps.Polyline({path: pathRoute});
