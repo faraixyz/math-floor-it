@@ -305,7 +305,6 @@ b {
     height: 16px;
     transform-origin: 50% 50%;
     transform: translateX(-100%) rotate(90deg) scale(0.5, 1);
-    cursor: pointer;
     opacity: 0.7; }
     .more-info .chevron svg {
       width: 100%;
