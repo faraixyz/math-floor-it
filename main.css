@@ -91,7 +91,7 @@ h2 {
 .results .fade-three .icon {
   width: 98px;
   height: 98px;
-  margin-left: 48px;
+  margin-left: 45px;
   margin-top: 16px; }
 
 .time-row {
@@ -105,7 +105,7 @@ h2 {
     text-shadow: 1px 1px rgba(65, 61, 55, 0.3); }
 
 .fade-two .icon {
-  margin-left: 58px; }
+  margin-left: 62px; }
 
 .fade-four {
   margin: 64px 58px 36px; }
@@ -299,7 +299,7 @@ b {
   position: relative; }
   .more-info .chevron {
     position: absolute;
-    top: -48px;
+    top: -22px;
     left: 50%;
     width: 16px;
     height: 16px;
