@@ -206,14 +206,14 @@
             function calculateFines(speedingTickets,speedingBy,redLightTickets){
                 speedFines=0
                 if (speedingBy>=11){
-                    speedFines = 100*speedingTickets
+                    speedFines = 100*(speedingTickets+1) //accounts for police officer
                 } else if (speedingBy>=6){
-                    speedFines = 35*speedingTickets
+                    speedFines = 35*(speedingTickets+1)
                 }
                 return speedFines+(100*redLightTickets)
             };
             function calculateNewTime(totalDistance,speed,overLimit){
-                return total/((speed+overLimit)/60)
+                return totalDistance/((speed+overLimit)/60)
             };
             function computeTotalDistance(result) {
                 var total = 0;
@@ -238,6 +238,11 @@
                 $("#trip-time10").text(Math.round(time10));
                 $("#trip-time25").text(Math.round(time25));
                 $("#saved-time").text(Math.round((totalDuration/60)-time25));
+                //$("#speed-amount2").text(Math.round(total/totalDuration));
+                /*$(".target").change(function() {
+                    var speed2 = $(".target").text;
+                    $("#speed-amount2").text(25+speed2);
+                });*/
 
                 pathRoute = result.routes[0].overview_path;
 
@@ -247,7 +252,11 @@
                 $("#red-lights").text(red_tickets);
                 var fine = speed_tickets * SPEED + red_tickets * RED;
                 $("#total").text(fine);
-
+                //var new_speed = document.getElementbyId("speed-amount").text;
+                /*$("#speed-amount").change(function() {
+                    var new_speed = $( this ).val();
+                })*/
+                //$("#total").text(calculateFines(speed_tickets, new_speed, red_tickets));
             }
             function checkCameras(cameraArray, pathRoute, cameraType) {
                 polylineRoute = new google.maps.Polyline({path: pathRoute});
@@ -358,8 +367,8 @@
             <h2>Here's your trip details...</h2>
             <br />
             <div class="flex-row">
-                <img src="speed_limit.svg" class="icon" style="position:relative;"/><p class="target" id="speed-amount" style="position: relative; top:30px; left:-105px; text-align:left; font-size:60px;">0</p>
-                <p>If you drive <input type="number" id="speed-amount" min="0" max="50" step="5" value="25">miles per hour over the speed limit...</p>
+                <img src="speed_limit.svg" class="icon" style="position:relative;"/><p id="speed-amount2" style="position: relative; top:30px; left:-125px; text-align:center; font-size:60px;">25</p>
+                <p>If you drive <input type="number" class="target" id="speed-amount" min="0" max="50" step="5" value="25">miles per hour over the speed limit...</p>
             </div>
             <div class="flex-row">
                 <img src="stoplight.svg" class="icon"/>
