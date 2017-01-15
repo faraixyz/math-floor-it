@@ -47,8 +47,8 @@
             });
 
             //handling autocomplete
-            var from = new google.maps.places.Autocomplete(document.getElementById("from"));
-            var to = new google.maps.places.Autocomplete(document.getElementById("to"));
+            var from = new google.maps.places.Autocomplete(document.getElementById("start-location"));
+            var to = new google.maps.places.Autocomplete(document.getElementById("end-location"));
             var from_marker = new google.maps.Marker({
                 title:"Origin"
             });
@@ -80,8 +80,8 @@
                 to_marker.setPosition(place.geometry.location);
                 to_marker.setMap(map);
             });
-            $("#find").on("click", function(){
-
+            $("#myAnimation").on("click", function(){
+                
             });
         }
     </script>
@@ -90,12 +90,53 @@
 
 </head>
 <body>
-    <h1 id="pizza">Hello World!</h1>
+    <h1>math.<b>floor(it)</b></h1>
+    <br/>
+    <div class="location-inputs">
+      <form-group>
+        <label for="start-location">Start Point</label>
+        <input id="start-location" type="text" placeholder="Start..." onFocus="geolocate()">
+      </form-group>
+      <form-group>
+        <label for="end-location">End Point</label>
+        <input id="end-location" type="text" placeholder="End...">
+      </form-group>
+
+
+      <form-group id ="myContainer">
+        <div id ="myAnimation" onclick="myMove()">
+          <img id="pic" src="car2.jpg" height=30px width=auto />
+        </div>
+
+        <script>
+          function myMove() {
+            var elem = document.getElementById("myAnimation");
+            var pos = 0;
+            var id = setInterval(frame, 10);
+            function frame() {
+             if (pos == 300) {
+               clearInterval(id);
+               elem.style.left = "0px";
+              } else {
+                pos++; 
+                elem.style.left = pos + 'px'; 
+              }
+            }
+          }
+        </script>
+
+      <!--<input id="car-animation" type="image" src="car1.jpg">-->
+      <!--<input id="car-animation" type="button">-->
+      <!--<button id="car-animation"><img src="car1.jpg"></button>
+      <button id="animate-car" onclick="animateImage()"></button>
+      <script language="javascript">
+        function animateImage() {
+          document.getElementById("animate-car").src == "car2.jpg") 
+        }
+      </script>-->
+
+      </form-group>
+    </div>
     <div id="map"></div>
-    <label for="from">Form</label>
-    <input type="text" id="from" name="from">
-    <label for="to">To</label>
-    <input type="text" id="to" name="from">
-    <button type="button" id="find">Search</button>
 </body>
 </html>

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+$light-bg: #FCECDD;
+$black: #413D37;
+
+$red: #FF6C64;
+$orange: #FFB464;
+$yellow: #FFFF59;
+$green: #63E897;
+$blue: #6490FF;
+
+
+#map {
+	height: 400px;
+	width:100%;
+	max-width: 940px;
+	margin: 20px auto;
+}
+
+
+html, body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 20px;
+
+	background-color: $light-bg;
+	color: $black;
+	height: 100%;
+}
+
+h1 {
+	font-size: 2em;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.location-inputs {
+	width: 100%;
+	max-width: 940px;
+
+	text-align: center;
+	margin: 20px auto;
+
+	display: flex;
+	justify-content: space-around;
+}
+
+label {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	display: none; 
+}
+
+input[type="text"] {
+	width: 100%;
+	font-size: 1.5em;
+	padding: 10px 0px;
+
+	border: none;
+	border-bottom: solid 2px $black;
+	transition: border 0.3s;
+	background: none;
+}
+
+input[type="text"]:focus,
+input[type="text"].focus {
+	border-bottom: solid 2px $blue;
+	outline: none;
+}
+
+::-webkit-input-placeholder {
+	color: darken($light-bg, 15%);
+	font-size: 1.5em;
+	font-weight: 200;
+	font-style: italic;
+}
+
+form-group {
+	width: 40%;
+}
+
+b {
+	font-weight: 700;
+}
