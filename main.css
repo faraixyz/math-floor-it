@@ -32,6 +32,12 @@ h1 {
   color: #FCECDD;
   transition: color 0.7s; }
 
+h2 {
+  font-size: 2em;
+  font-weight: 300;
+  text-align: center;
+  margin: 36px 0 20px;
+  color: #413D37; }
 
 .content {
   width: 100%;
@@ -48,7 +54,49 @@ h1 {
   width: 0;
   overflow-x: hidden;
   background-color: #FCECDD;
-  color: #413D37; }
+  color: #413D37;
+  text-align: left; }
+  .results .icon {
+    width: auto;
+    height: 144px;
+    display: inline-block;
+    margin: 0 36px; }
+  .results p {
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 1.5em; }
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px; }
+
+input[type="number"] {
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 1.5em;
+  font-style: italic;
+  border: none;
+  background: none;
+  color: #413D37;
+  padding-left: 15px;
+  margin-right: -10px;
+  outline: none;
+  color: #FF6C64; }
+
+#red-lights {
+  color: #FF6C64; }
+
+#speed-traps {
+  color: #FF6C64; }
+
+.big-number {
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 1.5em;
+  font-style: italic;
+  margin-right: 10px;
+  margin-left: 10px; }
 
 .location-inputs {
   position: relative;
@@ -72,7 +120,10 @@ label {
   text-align: left;
   display: none; }
 
-input {
+hr {
+  margin: 18px 72px; }
+
+input[type="text"] {
   position: relative;
   width: 100%;
   font-size: 36px;
@@ -102,14 +153,27 @@ b {
   position: absolute;
   bottom: -5px;
   left: -300px;
-  cursor: pointer; }
+  cursor: pointer;
+  overflow-x: hidden;
+  width: 100vw;
+  transition: left 2s ease; }
   #myAnimation svg {
     width: 288px;
     height: auto; }
+    #myAnimation svg #car-outline {
+      transition: stroke-color 0.3s ease; }
+  #myAnimation:hover svg #car-outline {
+    stroke: #FCECDD; }
+  #myAnimation #BackWheel, #myAnimation #FrontWheel {
+    transform: rotate(-720deg);
+    transition: transform 1.5s ease;
+    transform-origin: 50% 50%; }
+  #myAnimation:before {
+    opacity: 0; }
   #myAnimation.prepped {
     left: 36px; }
     #myAnimation.prepped:before {
-      content: "Let's Go!";
+      content: "Click me!";
       position: absolute;
       bottom: 120%;
       left: 0%;
@@ -118,14 +182,38 @@ b {
       font-weight: 400;
       padding: 16px 36px;
       border-radius: 5px;
-      clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 80% 90%, 83% 100%, 75% 90%, 0% 90%); }
+      clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 80% 90%, 83% 100%, 75% 90%, 0% 90%);
+      animation: popupshow 0.1s linear;
+      animation-delay: 3s;
+      animation-fill-mode: forwards; }
+    #myAnimation.prepped #BackWheel, #myAnimation.prepped #FrontWheel {
+      transform: rotate(0deg);
+      transition: transform 3s ease; }
+@keyframes popupshow {
+  0% {
+    transform: translateY(10%);
+    opacity: 0; }
+  100% {
+    transform: translateY(0%);
+    opacity: 1.0; } }
+  #myAnimation.clicked {
+    left: 110%;
+    transition: left 1s ease-in;
+    animation: rearBack 1s linear;
+    transform-origin: 0% 100%; }
+    #myAnimation.clicked #BackWheel, #myAnimation.clicked #FrontWheel {
+      transform: rotate(1440deg);
+      transition: transform 3s ease; }
+    #myAnimation.clicked:before {
+      display: none; }
 
-.textimage > img,
-.textimage > p {
-    display: inline-block;
-}
-
-
+@keyframes rearBack {
+  0% {
+    transform: rotate(0deg); }
+  15% {
+    transform: rotate(-15deg); }
+  45% {
+    transform: rotate(0deg); } }
 #back {
   position: absolute;
   width: 64px;
@@ -147,6 +235,5 @@ b {
     top: 50%;
     transform: translate(-50%, -50%) scale(-1, 1);
     transition: transform 0.3s; }
-
 
 /*# sourceMappingURL=main.css.map */
