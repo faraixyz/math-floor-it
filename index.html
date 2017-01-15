@@ -293,7 +293,7 @@
             $("#myAnimation").on("click", function(){
 
                 if(!(from.getPlace() && to.getPlace())){
-                    alert("Plese provide both the from and to path");
+                    alert("Please provide both the from and to path");
                 }
                 else{
                     displayRoute(from.getPlace().geometry.location, 
@@ -327,15 +327,41 @@
             <div id="map"></div>
         </div>
         <div class="results sixty-container">
+            <br />
             <p style="font-size:160%;">Trip Information</p>
-            <p>Total Distance: <span id="trip-distance">0</span> miles</p>
-            <p style="font-size:120%;">Total Time:</p>
-            <p>without speeding: <span id="trip-time">0</span> minutes</p>
-            <p>speeding 10 miles over: <span id="trip-time10">0</span> minutes</p>
-            <p>speeding 25 miles over: <span id="trip-time25">0</span> minutes</p>
-            <p>You could speed through <span id="red-lights">0</span> red light camera(s).</p>
-            <p>You could speed past <span id="speed-traps">0</span> speed camera(s).</p>
-            <p>You could owe $<span id="total">0</span> from driving so recklessly.</p>
+            <br />
+            <p style="text-align:left; margin-left:50px;">Total Distance: <span id="trip-distance">0</span> miles</p>
+            <br /><br />
+
+            <img src="Speed_Limit2.jpg" width=100px height=auto align=left style="margin-left:50px; margin-bottom:20px" />
+            <p style="font-size:120%; text-align:left; margin-left: 170px;">Total Time:</p>
+            <p style="text-align:left; margin-left:200px;">without speeding: <span id="trip-time">0</span> minutes</p>
+            <p style="text-align:left; margin-left:200px;">speeding 10 miles over: <span id="trip-time10">0</span> minutes</p>
+            <p style="text-align:left; margin-left:200px;">speeding 25 miles over: <span id="trip-time25">0</span> minutes</p>
+
+            <br /><br /><br /><br />
+            <p style="text-align:left; margin-left:50px;">You could speed past:</p> 
+            <div class="textimage" align=left>
+
+            <p style="font-size:130px; margin-left:50px; margin-top:0px;"><span id="red-lights">0</span></p>  
+            <img src="trafficlight.jpg" width=auto height=120px style="margin:20px" />
+            <p style="font-size:130px; margin-left:50px;"><span id="speed-traps">0</span></p>
+            <img src="camera.jpg" width=auto height=120px style="margin:20px" />
+            <br /><br />
+
+
+<!--            <p style="text-align:left; margin-left:50px; margin-top:70px; font-size:130px"><span id="red-lights">0</span></p>  
+            <img src="trafficlight.jpg" width=auto height=120px style="display:inline; margin-left:150px;" align=left />
+
+            <p style="text-align:left; margin-left:250px; margin-top:70px; font-size:130px"><span id="speed-traps">0</span></p>
+            <img src="camera.jpg" width=auto height=120px style="display:block; margin-left:300px;" align=left />
+            <br />-->
+            </div>
+
+            <br /><br />
+            <p style="text-align:left; margin-left: 50px; margin-bottom:20px; font-size:20px;">TIME SAVED: $<span id="saved">0</span></p>
+            <p style="text-align:left; margin-left: 50px; font-size:20px;">TRAFFIC VIOLATION FINES: $<span id="total">0</span></p>
+
         </div>
     </div>
     <div id="myAnimation" onclick="myMove()">
@@ -362,15 +388,6 @@
       }
     </script>
 
-      <!--<input id="car-animation" type="image" src="car1.jpg">-->
-      <!--<input id="car-animation" type="button">-->
-      <!--<button id="car-animation"><img src="car1.jpg"></button>
-      <button id="animate-car" onclick="animateImage()"></button>
-      <script language="javascript">
-        function animateImage() {
-          document.getElementById("animate-car").src == "car2.jpg") 
-        }
-      </script>-->
-    
+   
 </body>
 </html>
