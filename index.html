@@ -249,7 +249,7 @@
                 var fine = speed_tickets * SPEED + red_tickets * RED;
                 $("#total").text(fine);
 
-                $("#chance-death").text(SPEED * .71);
+                $("#chance-death").text(Math.round( (speed * .71) * 10 ) / 10);
                 /*var new_speed2 = 500;
                 $("#speed-amount").bind('change', function() {
                     var new_speed = $(this).val();
@@ -364,7 +364,7 @@
             <div id="map"></div>
         </div>
         <div class="results">
-            <h2>Here's your trip details...</h2>
+            <h2>Here are your trip details...</h2>
             <br />
 
             <div class="flex-row fade-one">
@@ -397,9 +397,9 @@
                 <hr>
                 <h2>More Info...</h2>
                 <p style="margin-left:58px;">Total Distance: <span id="trip-distance">0</span> miles</p><br />
-                <p style="text-align:left; margin-left:58px;">Total time without speeding: <span id="trip-time">0</span> minutes</p><br />
-                <p style="text-align:left; margin-left:58px;">speeding 10 miles over: <span id="trip-time10">0</span> minutes</p><br />
-                <p style="text-align:left; margin-left:58px;">speeding 25 miles over: <span id="trip-time25">0</span> minutes</p><br />
+                <p style="text-align:left; margin-left:58px;">Total Time Without Speeding: <span id="trip-time">0</span> minutes</p><br />
+                <p style="text-align:left; margin-left:58px;">Speeding 10 Miles Over: <span id="trip-time10">0</span> minutes</p><br />
+                <p style="text-align:left; margin-left:58px;">Speeding 25 Miles Over: <span id="trip-time25">0</span> minutes</p><br />
 
                 <h2 style="text-align:left; font-size:20px; font-weight: bold;  margin-left:58px;">TRAFFIC VIOLATION FINES: <span class="big-number">$<span id="total">0</span></span></h2>
     
