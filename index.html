@@ -224,12 +224,13 @@
                 $("#trip-time").text(Math.round(totalDuration/60));
                 $("#trip-time10").text(Math.round(time10));
                 $("#trip-time25").text(Math.round(time25));
+                $("#saved-time").text(Math.round((totalDuration/60)-time25));
                 //document.getElementById('total').innerHTML = total + ' km';
 
                 pathRoute = result.routes[0].overview_path;
 
                 var speed_tickets = checkCameras(speedcams,pathRoute,"speed");
-                var red_tickets = checkCameras(redcams,pathRoute,"red light")
+                var red_tickets = checkCameras(redcams,pathRoute,"red light");
                 $("#speed-traps").text(speed_tickets);
                 $("#red-lights").text(red_tickets);
                 var fine = speed_tickets * SPEED + red_tickets * RED;
@@ -351,7 +352,7 @@
             <div class="flex-row">
                 <img src="stoplight.svg" class="icon"/>
                 
-                <p> ...and run <span id="red-lights" class="big-number" >0</span> stoplights...</p>
+                <p> ...you'll run <span id="red-lights" class="big-number" >0</span> stoplights...</p>
             </div>
 
             <div class="flex-row">
@@ -361,13 +362,13 @@
                         <path d="M477,137H352.718L349,108c0-16.568-13.432-30-30-30H191c-16.568,0-30,13.432-30,30l-3.718,29H34   c-11.046,0-20,8.454-20,19.5v258c0,11.046,8.954,20.5,20,20.5h443c11.046,0,20-9.454,20-20.5v-258C497,145.454,488.046,137,477,137   z M255.595,408.562c-67.928,0-122.994-55.066-122.994-122.993c0-67.928,55.066-122.994,122.994-122.994   c67.928,0,122.994,55.066,122.994,122.994C378.589,353.495,323.523,408.562,255.595,408.562z M474,190H369v-31h105V190z" fill="#413D37"/>
                     </g>
                 </svg>
-                <p>...you'll pass <span class="big-number" id="speed-traps">0</span> speed cameras.</p>
+                <p>...and pass <span class="big-number" id="speed-traps">0</span> speed cameras.</p>
             </div>
             
             <hr>
 
             <h2>More Info...</h2>
-            <p>Total Distance: <span id="trip-distance">0</span> miles</p>
+            <p style="margin-left:50px;">Total Distance: <span id="trip-distance">0</span> miles</p>
             <br /><br />
             <p style="text-align:left; margin-left:200px;">Total time without speeding: <span id="trip-time">0</span> minutes</p>
             
@@ -375,6 +376,7 @@
             <p style="text-align:left; margin-left:200px;">speeding 25 miles over: <span id="trip-time25">0</span> minutes</p>
 
             <br /><br /><br /><br />
+            <!--
             <p style="text-align:left; margin-left:50px;">You could speed past:</p> 
             <div class="textimage" align=left>
 
@@ -386,8 +388,8 @@
 
             </div>
 
-            <br /><br />
-            <p style="text-align:left; margin-left: 50px; margin-bottom:20px; font-size:20px;">TIME SAVED: $<span id="saved">0</span></p>
+            <br /><br />-->
+            <p style="text-align:left; margin-left: 50px; margin-bottom:20px; font-size:20px;">TIME SAVED: <span id="saved-time">0</span> minutes</p>
             <p style="text-align:left; margin-left: 50px; font-size:20px;">TRAFFIC VIOLATION FINES: $<span id="total">0</span></p>
 
         </div>
