@@ -3,6 +3,9 @@
 
 ## Winner of two prizes at Uncommon Hacks 2017: [https://devpost.com/software/math-floor-it](https://devpost.com/software/math-floor-it)
 
+## View demo [HERE](https://nickcrawford.github.io/uncommonhacks2017/).
+Try entering two locations in Chicago such as the two airports: MDW and ORD.
+
 ##Inspiration
 As a group of four enterprising college students who (mostly) met over the weekend, we all acknowledged the dread that comes with the daily commute. With that in mind, we asked ourselves, "how much would it cost to miss every single red light and drive 20mph over the speed limit?" While the obvious answer is "a lot", we decided to quantify it.
 
