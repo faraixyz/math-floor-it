@@ -1,6 +1,8 @@
 #math.floor(it)
 ##by Nick Crawford, Claire Dolin, Farai Gandiya, and Isha Mehrotra
 
+## Winner of two prizes at Uncommon Hacks 2017: (https://devpost.com/software/math-floor-it)[https://devpost.com/software/math-floor-it]
+
 ##Inspiration
 As a group of four enterprising college students who (mostly) met over the weekend, we all acknowledged the dread that comes with the daily commute. With that in mind, we asked ourselves, "how much would it cost to miss every single red light and drive 20mph over the speed limit?" While the obvious answer is "a lot", we decided to quantify it.
 
