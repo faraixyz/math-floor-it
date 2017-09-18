@@ -10,14 +10,14 @@
             function geolocate() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
-                    var geolocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                    };
-                    var circle = new google.maps.Circle({
-                    center: geolocation,
-                    radius: position.coords.accuracy
-                    });
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
                     autocomplete.setBounds(circle.getBounds());
                 });
             }
@@ -340,8 +340,6 @@
             });
 
             $("input:text:visible:first").focus();
-            
-        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ5N5egldbaUbL5rNd7-Ebb7p6sk2NGRA&libraries=places&callback=initMap"
          async defer></script>
