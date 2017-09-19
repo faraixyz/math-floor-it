@@ -3,6 +3,7 @@
 
 ## Winner of two prizes at Uncommon Hacks 2017: [https://devpost.com/software/math-floor-it](https://devpost.com/software/math-floor-it)
 
+![THe home page of math.floor(it)](gallery.jpg)
 ## View demo [HERE](https://nickcrawford.github.io/uncommonhacks2017/).
 Try entering two locations in Chicago such as the two airports: MDW and ORD.
 
