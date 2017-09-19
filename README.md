@@ -1,5 +1,5 @@
 # math.floor(it)
-## by Nick Crawford, Claire Dolin, Farai Gandiya, and Isha Mehrotra
+## by [Nick Crawford](http://nickc.in/), [Claire Dolin](https://github.com/cdolin), [Farai Gandiya](http://fgandiya.me), and [Isha Mehrotra](http://ishamehrotra.com/)
 
 ## Winner of two prizes at Uncommon Hacks 2017: [https://devpost.com/software/math-floor-it](https://devpost.com/software/math-floor-it)
 
