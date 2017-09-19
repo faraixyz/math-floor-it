@@ -4,24 +4,10 @@
     <meta charset="UTF-8">
     <title>Uncommon Hacks 2017</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="jquery-3.1.1.js"></script>
     <script>
         function initMap(){
-            function geolocate() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        var geolocation = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-                        var circle = new google.maps.Circle({
-                            center: geolocation,
-                            radius: position.coords.accuracy
-                        });
-                    autocomplete.setBounds(circle.getBounds());
-                });
-            }
-                
             var SPEED = 100;
             var RED = 100;
             var styles = [
@@ -313,10 +299,11 @@
                           center: geolocation,
                           radius: position.coords.accuracy
                       });
-                      autocomplete.setBounds(circle.getBounds());
+                      from.setBounds(circle.getBounds());
                   });
                 }
             }
+            $("#start-location").focus(geolocate);
 
             $("#myAnimation").on("click", function(){
 
@@ -340,6 +327,7 @@
             });
 
             $("input:text:visible:first").focus();
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ5N5egldbaUbL5rNd7-Ebb7p6sk2NGRA&libraries=places&callback=initMap"
          async defer></script>
@@ -349,14 +337,29 @@
     <h1>math.<b>floor(it)</b></h1>
     <div class="content">
         <div class="location-inputs">
+                <div class="intro">
+                        <p>
+                            Is speeding worth it? With Math.floor(it), you can find out! Start off by entering the <strong>Origin</strong> and <strong>Destination</strong> and clicking the car as it shows up. You will then information on the fines you incur based on the red lights and speed traps along the way.
+                        </p>
+                </div>
             <form-group>
                 <label for="start-location">Start Point</label>
-                <input id="start-location" type="text" placeholder="Starting Location..." onFocus="geolocate()">
+                <input id="start-location" type="text" placeholder="Origin...">
             </form-group>
             <form-group>
                 <label for="end-location">End Point</label>
-                <input id="end-location" type="text" placeholder="Ending Location...">
+                <input id="end-location" type="text" placeholder="Destination...">
             </form-group>
+            <div class="intro">
+                <p>
+                    This award winning app was created at <a href="https://uncommonhacks.com/">Uncommon Hacks 2017</a> by:
+                    <ul>
+                        <li><a href="http://fgandiya.me">Farai Gandiya</a> <a href="https://github.com/fgandiya" title="Farai's Github"><i class="fa fa-github"></i></a></li>
+                        <li><a href="http://nickc.in/">Nicholas Crawford</a> <a href="https://github.com/NickCrawford" title="Nick's Github"><i class="fa fa-github"></i></a></li>
+                        <li><a href="http://ishamehrotra.com/">Isha Mehrotra</a> <a href="https://github.com/imehrotra" title="Isha's Github"><i class="fa fa-github"></i></a></li>
+                        <li><a href="#">Claire Dolin</a> <a href="https://github.com/cdolin" title="Claire's Github"><i class="fa fa-github"></i></a></li>
+                </p>
+            </div>
         </div>
         <div class="map-container">
             <div id="map"></div>
